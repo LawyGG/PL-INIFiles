@@ -38,24 +38,30 @@ th, td        {
 /* #finaltable  * { color: white; background-color: black; }   */
 /* #finaltable table { border-collapse:collapse; } */
 /* #finaltable table, td { border:1px solid white; } */
-#finaltable:hover td { background-color: blue; } 
-tr:nth-child(odd)    { background-color:#eee; }
-tr:nth-child(even)    { background-color:#00FF66; }
-input        { text-align: right;  border: none;       }     /* Align input to the right  */
-textarea     { border: outset; border-color: white;       }                        
-table        { border: inset; border-color: white; }
+
+/*#finaltable:hover td { background-color: blue; } */
+
+tr:nth-child(odd)    { background-color:#2E3134; color: #7F858A; }
+tr:nth-child(even)    { background-color:white ; }
+
+input        { text-align: right;  border: none;     }     /* Align input to the right  */
+textarea     { border: none; border-color: black;       }                        
+table        { border: inset; border-color: black; }
+
 .hidden      { display: none; } /*none*/
 .unhidden    { display: block; } /*block*/
-table.center { margin-left:auto; margin-right:auto; }
+
+table.center { margin-left:auto; margin: 0 auto; }
 #result      { border-color: red; }
 tr.error       { background-color: red; }
-pre.output   { background-color: white; }
-span.repeated { background-color: red }
-span.header { background-color: blue }
-span.comments { background-color: gray }
-span.blanks { background-color: white } /*blanco*/
-span.nameEqualValue { background-color: blue } /*azul*/
-span.error { background-color: red } /*rojo*/
+
+pre.output   { background-color: #909090 ; }
+span.repeated { color: red }
+span.header { color: 330066 } /*dark blue*/
+span.comments { color: white }
+span.blanks { color: black } 
+span.nameEqualValue { color: 333366	 }/*similar to dark blue*/
+span.error { background-color: red }
 
 body
 {
