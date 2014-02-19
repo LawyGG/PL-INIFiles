@@ -10,11 +10,31 @@ html *
     border: 1px solid #000;
     margin: 10px 5px 0 0;
   }
+  
+#drop_zone{
+	width:510px;
+    background-color: #2E3134;
+    border-radius: 5px;
+    color: #7F858A;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 40px 50px;
+    text-align: center;
+    text-transform: uppercase;
+}
 
-h1            { text-align: center; font-size: x-large; }
-th, td        { vertical-align: top; text-align: left; }   
+h1            { 
+	text-align: center; 
+	font-size: x-large; 
+}
+
+th, td        { 
+	vertical-align: top; 
+	text-align: left; 
+}   
+
 /* #finaltable  * { color: white; background-color: black; }   */
-
 /* #finaltable table { border-collapse:collapse; } */
 /* #finaltable table, td { border:1px solid white; } */
 #finaltable:hover td { background-color: blue; } 
@@ -38,5 +58,6 @@ span.error { background-color: red } /*rojo*/
 
 body
 {
- background-color:#b0c4de;  /* blue */
+ background-color:white;  /* white */
+ background-image: url("http://images6.fanpop.com/image/photos/36100000/Christmas-image-christmas-36118465-1920-1200.jpg");
 }
