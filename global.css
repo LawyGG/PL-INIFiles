@@ -12,7 +12,8 @@ html *
   }
   
 #drop_zone{
-	width:510px;
+	width:60%;
+	margin: 0 auto;
     background-color: #2E3134;
     border-radius: 5px;
     color: #7F858A;
@@ -26,7 +27,7 @@ html *
 
 h1            { 
 	text-align: center; 
-	font-size: x-large; 
+	font: bold 250% sans-serif; 
 }
 
 th, td        { 
