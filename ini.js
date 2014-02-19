@@ -1,31 +1,31 @@
-"use ______"; // Use ECMAScript 5 strict mode in browsers that support it
+"use strict"; // Use ECMAScript 5 strict mode in browsers that support it
 
-$(document)._____(function() {
-   $("#fileinput").______(calculate);
+$(document).ready(function() {
+   $("#fileinput").change(calculate);
 });
 
 function calculate(evt) {
   var f = evt.target.files[0]; 
 
   if (f) {
-    var r = new __________();
+    var r = new FileReader();
     r.onload = function(e) { 
-      var contents = e.target.______;
+      var contents = e.target.result;
       
       var tokens = lexer(contents);
       var pretty = tokensToString(tokens);
       
       out.className = 'unhidden';
-      initialinput._________ = contents;
-      finaloutput._________ = pretty;
+      initialinput.innerHTML = contents;
+      finaloutput.innerHTML = pretty;
     }
-    r.__________(f); // Leer como texto
+    r.readAsText(f); // Leer como texto
   } else { 
     alert("Failed to load file");
   }
 }
 
-var temp = '<li> <span class = "<%= ______ %>"> <%= _ %> </span>\n';
+var temp = '<li> <span class = "<%= t.type %>"> <%= _ %> </span>\n';
 
 function tokensToString(tokens) {
    var r = '';
@@ -39,34 +39,34 @@ function tokensToString(tokens) {
 }
 
 function lexer(input) {
-  var blanks         = /^___/;
-  var iniheader      = /^________________/;
-  var comments       = /^________/;
-  var nameEqualValue = /^________________________/;
-  var any            = /^_______/;
+  var blanks         = /^\s+/;
+  var iniheader      = /^\[([^\]\r\n]+)\]/;
+  var comments       = /^[;#](.*)/;
+  var nameEqualValue = /^(([^=;\r\n]+)=([^;\r\n]*)/;
+  var any            = /^(.|\n)+/;
 
   var out = [];
   var m = null;
 
   while (input != '') {
-    if (m = blanks.____(input)) {
-      input = input.substr(m.index+___________);
-      out.push({ type : ________, match: _ });
+    if (m = blanks.exec(input)) {
+      input = input.substr(m.index+m.lastIndex);
+      out.push({ type : 'Blanks', match: m });
     }
     else if (m = iniheader.exec(input)) {
-      input = input.substr(___________________);
-      _______________________________________ // avanzemos en input
+      input = input.substr(m.index+m.lastIndex);
+      out.push({ type: 'Headers', match: m }); // avanzemos en input
     }
     else if (m = comments.exec(input)) {
-      input = input.substr(___________________);
-      _________________________________________
+      input = input.substr(m.index+m.lastIndex);
+      out.push({ type: 'Comments', match: m });
     }
     else if (m = nameEqualValue.exec(input)) {
-      input = input.substr(___________________);
-      _______________________________________________
+      input = input.substr(m.index+m.lastIndex);
+      out.push({ type: 'NameEqualValue', match: m });
     }
     else if (m = any.exec(input)) {
-      _______________________________________
+      out.push({ type: 'Error', match: m });
       input = '';
     }
     else {
