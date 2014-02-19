@@ -5,16 +5,23 @@ $(document).ready(function() {
 });
 
 function calculate(evt) {
-  var f = evt.target.files[0]; 
   
-  evt.stopPropagation();
-  evt.preventDefault();
+  var f;
+ 
+  if(evt.type != "drop" )
+	  f = evt.target.files[0];
+  else{
+	  evt.stopPropagation();
+	  evt.preventDefault();
+	  f = evt.dataTransfer.files[0];
+	}
 
   if (f) {
     var r = new FileReader();
     r.onload = function(e) { 
-      var contents = e.target.result;
-      
+
+	  var contents = e.target.result;
+	
       var tokens = lexer(contents);
       var pretty = tokensToString(tokens);
       

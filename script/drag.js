@@ -6,7 +6,21 @@ dropbox.addEventListener("dragexit", dragExit, false);
 dropbox.addEventListener("dragover", dragOver, false);
 dropbox.addEventListener("drop", drop, false);
 
-function noopHandler(evt) {
+function dragExit(evt) {
   evt.stopPropagation();
   evt.preventDefault();
 }
+
+function dragOver(evt) {
+  evt.stopPropagation();
+  evt.preventDefault();
+}
+
+function Drop(evt) {
+	evt.stopPropagation();
+	evt.preventDefault();
+
+	calculate(evt);
+}
+
+
