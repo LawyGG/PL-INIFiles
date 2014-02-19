@@ -6,6 +6,9 @@ $(document).ready(function() {
 
 function calculate(evt) {
   var f = evt.target.files[0]; 
+  
+  evt.stopPropagation();
+  evt.preventDefault();
 
   if (f) {
     var r = new FileReader();
