@@ -19,13 +19,13 @@ function calculate(evt) {
       initialinput.innerHTML = contents;
       finaloutput.innerHTML = pretty;
     }
-    r.readAsText(f); // Leer como texto
+    r.readAsText(f);
   } else { 
-    alert("Error al cargar el fichero");
+    alert("Failed to load file");
   }
 }
 
-var temp = '<li> <span class = "<%= t.type %>"> <%= _ %> </span>\n';
+var temp = '<li> <span class = "<%= token.type %>"> <%= match %> </span>\n';
 
 function tokensToString(tokens) {
    var r = '';
@@ -42,7 +42,7 @@ function lexer(input) {
   var blanks         = /^\s+/;
   var iniheader      = /^\[([^\]\r\n]+)\]/;
   var comments       = /^[;#](.*)/;
-  var nameEqualValue = /^(([^=;\r\n]+)=([^;\r\n]*)/;
+  var nameEqualValue = /^([^=;\r\n]+)=([^;\r\n]*)/;
   var any            = /^(.|\n)+/;
 
   var out = [];
@@ -50,23 +50,24 @@ function lexer(input) {
 
   while (input != '') {
     if (m = blanks.exec(input)) {
-      input = input.substr(m.index+m.lastIndex);
-      out.push({ type : 'Blanks', match: m });
+      input = input.substr(m.index+m[0].length);
+      out.push({ type : 'blanks', match: m });
     }
     else if (m = iniheader.exec(input)) {
-      input = input.substr(m.index+m.lastIndex);
-      out.push({ type: 'Headers', match: m }); // avanzemos en input
+      input = input.substr(m.index+m[0].length);
+      out.push({ type: 'header', match: m });
     }
     else if (m = comments.exec(input)) {
-      input = input.substr(m.index+m.lastIndex);
-      out.push({ type: 'Comments', match: m });
+      input = input.substr(m.index+m[0].length);
+      out.push({ type: 'comments', match: m });
     }
     else if (m = nameEqualValue.exec(input)) {
-      input = input.substr(m.index+m.lastIndex);
-      out.push({ type: 'NameEqualValue', match: m });
+      /* while (match casa con /\\$/) concatena la siguiente línea */
+      input = input.substr(m.index+m[0].length);
+      out.push({ type: 'nameEqualValue', match: m });
     }
     else if (m = any.exec(input)) {
-      out.push({ type: 'Error', match: m });
+      out.push({ type: 'error', match: m });
       input = '';
     }
     else {
