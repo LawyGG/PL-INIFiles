@@ -8,9 +8,9 @@ function calculate(evt) {
 
   var f;
   
-  if (evt.type != 'drop') // Evento Input Target
+  if (evt.type != 'drop')
     f = evt.target.files[0];
-  else { // Evento Drag & Drop
+  else {//Drag and Drop
     evt.stopPropagation();
     evt.preventDefault();
     f = evt.dataTransfer.files[0];

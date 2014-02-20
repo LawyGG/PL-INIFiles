@@ -46,7 +46,7 @@ tr:nth-child(even)    { background-color:white ; }
 
 input        { text-align: right;  border: none;     }     /* Align input to the right  */
 textarea     { border: none; border-color: black;       }                        
-table        { border: inset; border-color: black; }
+table        { border: inset; border-color: black; margin: 0 auto;}
 
 .hidden      { display: none; } /*none*/
 .unhidden    { display: block; } /*block*/
@@ -66,5 +66,5 @@ span.error { background-color: red }
 body
 {
  background-color:white;  /* white */
- background-image: url("http://images6.fanpop.com/image/photos/36100000/Christmas-image-christmas-36118465-1920-1200.jpg");
+ background-image: url(img/background.jpg);
 }
