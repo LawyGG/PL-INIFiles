@@ -60,7 +60,7 @@ span.repeated { color: red }
 span.header { color: 330066 } /*dark blue*/
 span.comments { color: white }
 span.blanks { color: black } 
-span.nameEqualValue { color: 333366	 }/*similar to dark blue*/
+span.nameEqualValue { color: 333366	 }/*similar to dark purple*/
 span.error { background-color: red }
 
 body
