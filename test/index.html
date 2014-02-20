@@ -5,14 +5,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mocha.css" />
+    
+     <script type="text/html" id="template"><li> <span class = "<%= token.type %>"> <%= match %> </span></script>
   </head>
   <body>
+    
     <div id="mocha"></div>
+    
     <script src="mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
-    <script src="tests.js"></script>
+    <script src="chai.js"></script>
+    <script src="../script/ini.js"></script>
+    
+    <script>mocha.setup('tdd')</script>
+    <script src="tests.js"></script>   
+    
+     <script type="text/javascript" src="../library/underscore.js"></script>
+     <script type="text/javascript" src="../library/jquery.js"></script>
+    
     <script>
       mocha.run();
     </script>
+
+    <a href="../index.html">Enlace a la pagina principal</a></br>
   </body>
 </html>
