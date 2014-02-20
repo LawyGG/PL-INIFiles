@@ -68,3 +68,8 @@ body
  background-color:white;  /* white */
  background-image: url(img/background.jpg);
 }
+
+
+a:link {color:gray;}
+a:visited{color:black;}
+a:hover{ color:#909090;}
