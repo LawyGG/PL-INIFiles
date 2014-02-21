@@ -54,7 +54,8 @@ function lexer(input) {
   var blanks         = /^\s+/;
   var iniheader      = /^\[([^\]\r\n]+)\]/;
   var comments       = /^[;#](.*)/;
-  var nameEqualValue = /^([^=;\r\n]+)=((?:\\\s*\n|[^;\r\n]*)/;
+  var nameEqualValue = /^([^=;\r\n]+)=((?:\\\s*\n|[^;\r\n])*)/;
+  // /^([^=;\r\n]+)=((?:\\\s*\n|[^;\r\n])*)/
   var any            = /^(.|\n)+/;
 
   var out = [];
@@ -74,7 +75,6 @@ function lexer(input) {
       out.push({ type: 'comments', match: m });
     }
     else if (m = nameEqualValue.exec(input)) {
-      /* while (match casa con /\\$/) concatena la siguiente línea */
       input = input.substr(m.index+m[0].length);
       out.push({ type: 'nameEqualValue', match: m });
     }
