@@ -4,15 +4,16 @@ $(document).ready(function() {
    $("#fileinput").change(calculate);
 });
 
-function calculate(evt) {
+$(document).ready(window.onload);
 
-  var f;
+function calculate(evt) {
+  var f 
   
-  if (evt.type != 'drop')
-    f = evt.target.files[0];
-  else {//Drag and Drop
+  if(evt.type != "drop")
+    f = evt.target.files[0]; 
+  else{//Evento DROP
     evt.stopPropagation();
-    evt.preventDefault();
+	evt.preventDefault();
     f = evt.dataTransfer.files[0];
   }
   
@@ -25,16 +26,16 @@ function calculate(evt) {
       var pretty = tokensToString(tokens);
       
       out.className = 'unhidden';
-      initialinput.innerHTML = contents;
-      finaloutput.innerHTML = pretty;
       
+      if (window.localStorage) localStorage.initialinput = contents;
+		initialinput.innerHTML = contents;
+      if (window.localStorage) localStorage.finaloutput = pretty;
+        finaloutput.innerHTML = pretty;
     }
     r.readAsText(f);
   } else { 
     alert("Failed to load file");
   }
-  
-
 }
 
 
@@ -87,4 +88,15 @@ function lexer(input) {
     }
   }
   return out;
+}
+
+//Save storage
+window.onload = function(){
+  if (window.localStorage && localStorage.initialinput) {
+    document.getElementById("initialinput").innerHTML = localStorage.initialinput;
+    document.getElementById("out").className = "none";
+  }
+  if (window.localStorage && localStorage.finaloutput) {
+    document.getElementById("finaloutput").innerHTML = localStorage.finaloutput;
+  }
 }
